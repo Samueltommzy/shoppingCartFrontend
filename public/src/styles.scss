@@ -1,0 +1,134 @@
+* {
+  box-sizing: border-box; 
+  height: auto;
+}
+
+.header {
+   // border: 1px solid black;
+    background:rgb(200,200,200);
+    text-align: center;
+}
+.header h1{
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    
+}
+.header ul{
+    list-style-type: none;
+}
+.header li{
+    float: left;
+}
+input {
+    width:100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    resize: vertical;
+}
+label{
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+button {
+    margin-top: 5px;
+    padding: 12px 20px;
+    //cursor: pointer;
+    float: right;
+    border-radius: 7px;
+    background-color: grey;
+    color: black;
+}
+// button:hover{
+//     background-color: grey;
+// }
+.container {
+    border-radius: 5px;
+   // background-color: grey;
+    padding: 20px;
+   // border:1px solid black;
+    margin-top: 5px;
+    background-color:#ccc;
+}
+.lab {
+    float: left;
+    width: 25%;
+    margin-top:5px;
+}
+.inp{
+    float: left;
+    width: 75%;
+    margin-top: 5px;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.fb{
+    background-color: blue;
+    text-align: center;
+    color: white;
+    padding: 7px;
+    border-radius: 6px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.google{
+    background-color: red;
+    text-align: center;
+    color: white;
+    padding: 7px;
+    border-radius: 6px;
+    width: 100%;
+    margin-bottom: 8px;
+}
+.social {
+    margin-top:10px;
+    border-top: 1px solid white;
+    background-color: white;
+}
+.or {
+    position:absolute;
+    left: 50%;
+    text-align: center;
+    margin-top: -10px;
+    font-family: sans-serif;
+    background-color: white;
+}
+.row p {
+    text-align: center;
+}
+.row a {
+    text-decoration: none;
+}
+.row a:hover{
+    text-decoration: underline;
+
+}
+.validator{
+    color: red;
+    padding-top: 8px;
+    padding-left: 16px;
+   // font-size: 10px;
+}
+@media screen and (max-width: 600px){
+    .lab, .inp , .button, .fb , .google {
+        width: 100%;
+        margin-top: 0;
+    }
+    .or{
+        margin:-18px;
+    }
+   .button,.google, .fb, .row p {
+        font-size: 14px; 
+    }
+    h1 {
+        font-size:15px;
+        display: block;
+    }
+    .validator{
+        font-size: 15px;
+    }
+}

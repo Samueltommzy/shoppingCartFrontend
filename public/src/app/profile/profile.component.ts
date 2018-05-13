@@ -9,10 +9,13 @@ styleUrls: ['./profile.component.scss']
 })
 
 export class ProfileComponent implements OnInit {
+@Input() products : Array<object>;
 
 constructor(private apiService : ApiService) { }
-
 ngOnInit() { 
+    console.log("products" , this.products);
     }
- 
+public add(){
+
+ }
 }

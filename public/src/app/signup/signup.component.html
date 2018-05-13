@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <body>               
+    <script src="//connect.facebook.net/en_US/all.js"></script>
+    <div class = "header">
+        <ul>
+             <li><img src = "../../assets/logo.png" style="width:40px;height:auto;margin:10px;position:relative;"></li>
+        </ul>
+        <h1> Welcome to the Shoping place</h1>
+    </div>
+    <div class="container">
+    <form class = "form" [formGroup] = "signupForm">
+        <div class="row">
+            <div class="lab">
+              <label>First Name</label>
+            </div>
+            <div class="inp">
+                <input type="text" class="form-control" formControlName = "firstName">
+            </div>
+        </div>
+        <div *ngIf="!signupForm.controls.firstName.valid && 
+        (signupForm.controls.firstName.dirty)" class="validator">Name must be atleast 3 letters long</div>
+        <div class="row">
+            <div class="lab">
+             <label>Last Name</label>
+            </div>
+            <div class="inp">
+                <input type="text" class="form-control" formControlName = "lastName" >
+            </div>
+        </div>
+         <div *ngIf="!signupForm.controls.lastName.valid && 
+        (signupForm.controls.lastName.dirty)" class="validator">Name must be atleast 3 letters long</div>
+        <div class = "row">
+            <div class="lab">   
+                <label>Email</label>
+            </div>
+            <div class="inp">
+                <input type="email" class="form-control" formControlName = "email" placeholder="e.g sam@gmail.com">
+            </div>
+        </div>
+         <div *ngIf="!signupForm.controls.email.valid && 
+        (signupForm.controls.email.dirty)" class="validator">Invalid email address</div>
+        <div class="row">
+            <div class="lab">
+                <label>Phone Number</label>
+            </div>
+            <div class="inp">
+                <input type ="tel" class="form-control" formControlName = "phoneNumber" placeholder="e.g +2348123453786">
+            </div>
+        </div>
+         <div *ngIf="!signupForm.controls.phoneNumber.valid && 
+        (signupForm.controls.phoneNumber.dirty)" class="validator">Invalid phone Number</div>
+        <div class="row">
+            <div class="lab">
+                <label>Password</label>
+            </div>
+            <div class="inp">
+                <input type="password" class="form-control" formControlName = "password" >
+            </div>
+        </div>
+          
+        <div *ngIf="signupForm.controls.password.hasError('pattern') &&
+        (signupForm.controls.password.dirty || submitted)"
+        class="validator">
+        Passwords should be at least 8 characters long and contain one number, one character and one special character.
+        </div>
+        <div class="row">
+        <button [disabled] = "!signupForm.valid" (click)="user()">Signup</button>
+        </div>
+     </form>
+      <div class="row">
+          <div class="social">
+              <span class="or" text-center>OR</span>
+              <button class="fb" (click) = "fbLogin()"> Login with Facebook</button>
+              <button class="google" (click) = "googleLogin()"> Login with Google</button>
+          </div>
+          <p>Already have an account? <a uiSref = 'signin' >Sign in</a></p>
+    </div>
+    </div>
+    </body>
+</html>

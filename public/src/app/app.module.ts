@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule, JsonpModule , Http } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
@@ -20,7 +20,8 @@ import { UIView } from '@uirouter/angular';
 import { StateService, Transition } from "@uirouter/angular";
 import { RouterModule } from  './router.module';
 import { Location } from'@angular/common';
-
+import {  SocialLoginModule,AuthServiceConfig } from  'angular5-social-login';
+import { authConfig } from '../config/social.config';
 
 @NgModule({
   declarations: [
@@ -34,12 +35,17 @@ import { Location } from'@angular/common';
   imports: [
     RouterModule,
     BrowserModule,
-    FormsModule,
     HttpModule,
+    ReactiveFormsModule,
+    SocialLoginModule
   ],
   providers: [
-     ApiService,
-     Location
+     ApiService, 
+     Location,
+     {
+       provide: AuthServiceConfig,
+       useFactory: authConfig
+     }
   ],
   bootstrap: [UIView]
 })

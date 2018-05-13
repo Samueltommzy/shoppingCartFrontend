@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+        <div class="topnav">
+            <ul>
+                <li><img src = "../../assets/logo.png" style="width:40px;height:auto;margin:10px;position:relative;"></li>
+                <li><a uiSref = "mycart">My cart</a></li>
+                <li><a uiSref = "blog">Blog</a></li>
+                <li><a uisRef = "logout">logout</a></li>
+            </ul>
+        </div>
+        <div class="product" *ngIf="products.length">
+            <div class= "prod" *ngFor="let product of products">
+                <p text-center >{{product.productName}}</p>
+                 <a uiiSref= 'order'><img [src] = "product.image" style="width: 300;height:200;"></a>
+                 <div class="description">
+                     {{product.productdescription}}
+                 </div>
+                    <p> Price : ${{product.productPrice}}</p>
+                     <button (click) ="order">Add to Cart</button>
+                 </div>   
+    </div>
+</html>
