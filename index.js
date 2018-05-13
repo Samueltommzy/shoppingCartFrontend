@@ -23,6 +23,7 @@ mongoose.connect(config.database).then((err)=>{
     console.log("successfully connected to " + config.databaseName);
 });
 
+app.use(cors());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,11 +39,11 @@ app.use(session({
 app.use(express.static(__dirname + "/public"));
 app.use("/npm",express.static(__dirname + "/node_modules"));
 app.use('/user', userRoute);
-app.use('/' , productRoute);
+app.use('/home' , productRoute);
 
-app.get('*',(req,res)=>{
-    res.redirect('/user/signup');
-})
+// app.get('*',(req,res)=>{
+//     res.redirect('/user/signup');
+// })
 http.listen(port,(err)=>{
     if(err) console.log(err);
     console.log("app listening on " + port);
