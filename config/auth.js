@@ -2,23 +2,26 @@ let passport = require("passport");
 let User = require("../models/user");
 let LocalStrategy = require("passport-local").Strategy;
 
+module.exports = function(passport){ 
 passport.serializeUser((User,done)=>{
     done(null,User.id);
 });
 
-passport.deserializeUser((User,done)=>{
+passport.deserializeUser((id,done)=>{
     User.findById(id,(err,User)=>{
         done(err,User);
     });
 });
 
-passport.use('local.signup',new LocalStrategy({
+passport.use('local-signup',new LocalStrategy({
     email: 'email',
     password: 'password',
     firstName: 'firstName',
     lastName: 'lastname',
-    phoneNumber: 'phoneNumber'
+    phoneNumber: 'phoneNumber',
+    passReqToCallback: true
 },(req,email,password,firstName,lastname,phoneNumber,done)=>{
+    console.log("in passport");
     req.checkBody('email', 'invalid email').notEmpty().isLength({min:4});
     req.checkBody('firstname', 'invalid firstName').notEmpty().isLength({min:4});
     req.checkBody('lastName', 'invalid lastName').notEmpty().isLength({min:4});
@@ -39,12 +42,13 @@ passport.use('local.signup',new LocalStrategy({
             return done(null,false,{message: "Email or phone number has been taken"});
         }
         let newUser = new User();
-        newUser.email = email;
-        newUser.firstName = firstName;
-        newUser.lastname = lastName;
-        newUser.phoneNumber = phoneNumber;
-        newUser.password = newUser.encryptPassword(password);
+        newUser.local.email = emrequire("./config/auth");ail;
+        newUser.local.password = firstName;
+        newUser.local.lastname = lastName;
+        newUser.local.phoneNumber = phoneNumber;
+        newUser.local.password = newUser.encryptPassword(password);
         newUser.save((err,data)=>{
+            console.log("data",data)
             if (err) return done(err);
             return done(null, newUser);
         });
@@ -79,4 +83,4 @@ passport.use('local.signin', new LocalStrategy({
      return done(null, user);
   });
 
-}));
+}))};
