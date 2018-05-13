@@ -14,7 +14,7 @@ let methodOverride = require("method-override");
 let Products = require("./routes/productRoute");
 let app = express();
 let http = require("http").createServer(app)
-let port = process.env.port || 3000;
+let port = process.env.PORT || 3000;
 let userRoute = require("./routes/userRoute")(express);
 
 mongoose.Promise = global.Promise;
@@ -40,10 +40,10 @@ app.use(express.static(__dirname + "/public"));
 app.use("/npm",express.static(__dirname + "/node_modules"));
 app.use('/user', userRoute);
 app.use('/home' , productRoute);
+app.get("*", (request, response)=> {
+    response.sendFile(__dirname + "/public/src/index.html");
+});
 
-// app.get('*',(req,res)=>{
-//     res.redirect('/user/signup');
-// })
 http.listen(port,(err)=>{
     if(err) console.log(err);
     console.log("app listening on " + port);
