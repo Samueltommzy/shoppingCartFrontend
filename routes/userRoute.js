@@ -1,6 +1,7 @@
 "use strict";
 
 let userModel = require("../models/user");
+let googleModel = require("../models/googleUser");
 let express = require("express");
 let passport = require("passport");
 let Order = require("../models/order");
@@ -36,35 +37,33 @@ userRoute.use('/',(req, res, next)=>{
 });
 
 userRoute.post('/signup',(req,res,next)=>{
+  console.log(req.body);
   let userObj = {
-             password:    req.body.password,
-             firstName:   req.body.firstName,
-             lastName:    req.body.lastName,
-             email:       req.body.email,
-             phoneNumber: req.body.phoneNumber,
+             password:    req.body.user.password,
+             firstName:   req.body.user.firstName,
+             lastName:    req.body.user.lastName,
+             email:       req.body.user.email,
+             phoneNumber: req.body.user.phoneNumber,
            
          };
          console.log(userObj);
-         userModel.find({ email:userObj.email, phoneNumber: userObj.phoneNumber,available: true}).exec((err,document)=>{
-            //  if (err) return next(err);
-            //  if (req.session.oldUrl) {
-            //    let oldUrl=req.session.oldUrl;
-            //    req.session.oldUrl=null;
-            //    res.redirect(oldUrl);
-            //  }
-  
-            //  else {
-            //    res.redirect('/user/profile');
-            //   }
+         userModel.normal.find({ email:userObj.email,available: true}).exec((err,document)=>{
              if (document.length) {
                  res.status(200).send({
                      success: false,
-                     message: "sorry email or phone number has been used already"
+                     message: "sorry email has been used"
                  });
-
                  return false;
              };
-
+            userModel.normal.find({phoneNumber: userObj.phoneNumber,available:true}).exec((err,document)=>{
+              if ( document.length) {
+                res.status(200).send({
+                  success: false,
+                  message: "sorry phone number has been used"
+                });
+                return false;
+              };
+           
              let user = new userModel(userObj);
              user.save((err,doc)=>{
                  if(err) return next(err);
@@ -73,18 +72,54 @@ userRoute.post('/signup',(req,res,next)=>{
                      status: 200,
                      message: "successfully created user",
                      data: doc
-                 })
-             })
-         });
+                 });
+             });
+          });
+        });
+});
+
+userRoute.post('/googlesignIn', (req,res,next)=>{
+  let name = req.body.user.name.split(" ");
+  let userDetails = {
+    firstName: name[0],
+    lastName: name[1],
+    email: req.body.user.email,
+    id: req.body.user.id,
+    token: req.body.user.token
+  };
+
+  console.log('google user' ,userDetails);
+  googleModel.find({email: userDetails.email}).exec((err,doc)=>{
+    if (doc.length) {
+      res.status(200).send({
+        success: true,
+        message: "Already signed in",
+        status: 201
+      });
+      return true;
+    };
+
+    let user = new googleModel(userDetails);
+    user.save((err,doc)=>{
+      if(err) return next(err);
+
+      res.status(200).send({
+        success: true,
+        status:200,
+        message: "Google user created",
+        data: doc
+      });
+    });
+  });
 });
 
 userRoute.post('/signin',(req, res, next)=> {
  let loginDetails = {
-   email: req.body.email,
-   password: req.body.password
+   email: req.body.user.email,
+   password: req.body.user.password
  }
 
- userModel.findOne({email:loginDetails.email,available:true}).exec((err,doc)=>{
+ userModel.normal.findOne({email:loginDetails.email,available:true}).exec((err,doc)=>{
    console.log(loginDetails.email);
    console.log(loginDetails.password);
    
@@ -125,7 +160,7 @@ return userRoute;
 };
 
 // function isLoggedIn(req, res, next){
-//   if(req.isAuthenticated()){
+//   if(req.body.user.token.length){
 //     return next();
 //   }
 //   res.redirect('/');

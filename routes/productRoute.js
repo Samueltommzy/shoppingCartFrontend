@@ -9,7 +9,7 @@ let authtoken = "1111";
 //let client = require("twilio")(accountSid,authtoken);
 
 productRoute.get('/product', (req,res,next)=>{
-    Product.find({available:true}).exec((err,document)=>{
+    Product.find({}).exec((err,document)=>{
         if(err) return next(err);
         console.log("products", document);
         res.status(200).send({
@@ -104,6 +104,6 @@ function isLoggedIn(req,res,next){
         return next();
     };
     req.session.oldUrl = req.url;
-    res.redirect('/user/sign');
+   // res.redirect('/user/sign');
 }
 
