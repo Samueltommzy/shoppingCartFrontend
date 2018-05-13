@@ -3,14 +3,15 @@ let mongoose = require("mongoose");
 let bcrypt = require("bcrypt-nodejs");
 let Schema = mongoose.Schema;
 
-let userSchema = new Schema({
-    firstName: { type: String, required:true },
-    lastName:  { type: String, required:true },
-    email: { type:String, required: true},
-    phoneNumber: { type:Number, required: true},
-    password: { type: String, required:true},
-    available: { type: Boolean, default: true}
-});
+let userSchema = new Schema({     
+        firstName: { type: String, required:true },
+        lastName:  { type: String, required:true },
+        email: { type:String, required: true},
+        phoneNumber: { type:Number, required: true},
+        password: { type: String, required:true},
+        available: { type: Boolean, default: true}
+}
+);
 
 
 userSchema.pre("save", function(next) {
