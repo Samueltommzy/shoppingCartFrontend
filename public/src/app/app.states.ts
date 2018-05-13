@@ -14,27 +14,10 @@ import { AppComponent } from './app.component';
 
 export function productService (api: ApiService): any {
     return api.getAllProducts().then(data => {
+        console.log("got products" , data.data);
         if (!data) return false; 
 
-        return data.data;
-    });
-}
-
-export function signupService(api: ApiService, trans: Transition): any {
-    return api.signup(trans.params().user).then(data=>{
-        if (!data) return false;
-
-        return data;
-    })
-}
-
-export function signinService(api: ApiService, trans: Transition): any {
-    let user = trans.params().user;
-    return api.login(user).then(data=>{
-        
-        if (!data) return false;
-
-        return data;
+        return data.data.slice(1,30);
     });
 }
 
@@ -49,32 +32,18 @@ export const signupRoute = {
     name : "signup",
     url: '/user/signup',
     component: SignupComponent,
-    resolve: [
-        {
-            token: 'signup',
-            deps:[ ApiService, Transition ],
-            resolveFn: signupService
-        }
-    ]
 }
 
 export const signinRoute = {
     parent:'app',
     name : "signin",
     url: '/user/signin',
-    component:SigninComponent,
-    resolve:[
-        {
-            token : 'signin',
-            deps: [ApiService, Transition],
-            resolveFn:signinService
-        }
-    ]
+    component:SigninComponent
 }
 
 export const productRoute = {
-    name : 'products',
-    url: ' /product',
+    name: 'products',
+    url: '/products',
     component: ProfileComponent,
     resolve :[
         {
