@@ -30,7 +30,7 @@
         </div>
           
         <div *ngIf="signinForm.controls.password.hasError('pattern') &&
-        (signinForm.controls.password.dirty || submitted)"
+        (signinForm.controls.password.dirty)"
         class="validator">
         Passwords should be at least 8 characters long and contain one number, one character and one special character.
         </div>

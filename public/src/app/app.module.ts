@@ -31,7 +31,8 @@ import { authConfig } from '../config/social.config';
     ProfileComponent,
     SigninComponent, 
     SignupComponent,
-    FooterComponent
+    FooterComponent,
+    SourceHeadlineComponent 
   ],
   imports: [
     RouterModule,
