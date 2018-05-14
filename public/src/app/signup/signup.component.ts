@@ -84,9 +84,9 @@ export class SignupComponent implements OnInit {
           alert("successfully logged in with facebook");
           this.state.go('products' , null, {reload:true});
         }
-      })
-    })
-    }
+      });
+    });
+    };
 
 
 
