@@ -100,7 +100,7 @@ googleLogin() {
         id: data.id,
         token: data.token
       }
-      this.api.googleLogin(userData).then(data=>{
+      this.api.socialLogin(userData).then(data=>{
         console.log(data);
         if(!data.success){
           alert(data.message);
