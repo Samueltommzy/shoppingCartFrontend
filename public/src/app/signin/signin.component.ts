@@ -5,12 +5,16 @@ import { FormControl,Validators,FormGroup } from '@angular/forms';
 import { ApiService } from '../../app/api.service';
 import { StateService } from '@uirouter/angular';
 import { dataValidator } from '../validation';
+import { fadeIn } from '../animations/fadeIn';
 
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss']
+  styleUrls: ['./signin.component.scss'],
+  animations: [fadeIn],
+  host: { '[@fadeIn]': ''},
+  moduleId: module.id.toString()
 })
 export class SigninComponent implements OnInit {
   public signinForm: FormGroup;

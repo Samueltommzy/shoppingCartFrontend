@@ -6,11 +6,15 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { StateService } from '@uirouter/angular';
 import { dataValidator } from '../validation';
 import { AuthService, FacebookLoginProvider,GoogleLoginProvider} from 'angular5-social-login';
+import { fadeIn } from '../animations/fadeIn';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  styleUrls: ['./signup.component.scss'],
+  animations: [fadeIn],
+  host: {'[@fadeIn]' : ''},
+  moduleId: module.id.toString()
 })
 
 

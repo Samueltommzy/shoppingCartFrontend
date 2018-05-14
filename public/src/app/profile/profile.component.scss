@@ -1,9 +1,7 @@
 *{
-    box-sizing: border-box;
+    box-sizing: border-box;   
 }
-// .container{
-//     background-color: peachpuff;
-// }
+ 
 .topnav{
     background-color: gray;
    // position: fixed;
@@ -28,9 +26,22 @@
     padding: 14px 16px;
     text-decoration: none;
 }
+
+.topnav a:link{
+    color: white;
+}
+.topnav a:active{
+    border: none;
+    text-decoration: none;
+
+}
 .topnav a:hover {
     background-color: rgb(200,200,200);
     color: black;
+    text-decoration: underline;
+}
+topnav a:visited {
+    color: rgb(100,15,150);    
 }
 
 .topnav ul li:last-child{
@@ -48,16 +59,22 @@
     font-size: 15px;
     text-align: center;
 }
-// .product  p{
-//     margin-top: 8px;
-//     padding: 12px 14px;
-// }
+.product  p{
+    margin-top: 8px;
+    padding: 12px 14px;
+}
 .prod{
     // padding: 0 6px;
     // border:1px solid #ccc;
     // float: left;
     // width: 100%;
     border: 1px solid #ccc
+}
+.prod h2{
+    font-size: 15px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: oblique;
 }
 .prod:hover{
     border: 1px solid #777;
@@ -66,18 +83,31 @@
     padding: 15px;
     text-align: center;
     font-size: 15px;
-    overflow-y : hidden;
+    overflow-y : auto;
+    background-color: rgba(20,20,20,0.4);
+    color: white;
+    left:3px;
+    right: 2px;
 }
 .prod img {
     max-width: 100%;
     height: auto;
 }
-button{
-  //  bottom: 15px;
+.prod .description:hover{
+    background-color: rgba(20,20,20,1.0);
+}
+button:hover{
+    opacity: 0.5;
+    color: rgb(200,200,200);
+}
+p button {
+    position: relative;
+    float: left;
+    bottom:28px;
 }
 @media only screen and (max-width:700px){
     .product{
-        width: 50%;
+        width: 100%;
         margin: 6px 0;
     }
 }

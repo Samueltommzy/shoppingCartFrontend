@@ -19,6 +19,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { UIView } from '@uirouter/angular';
 import { StateService, Transition } from "@uirouter/angular";
 import { RouterModule } from  './router.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Location } from'@angular/common';
 import {  SocialLoginModule,AuthServiceConfig } from  'angular5-social-login';
 import { authConfig } from '../config/social.config';
@@ -37,7 +38,8 @@ import { authConfig } from '../config/social.config';
     BrowserModule,
     HttpModule,
     ReactiveFormsModule,
-    SocialLoginModule
+    SocialLoginModule,
+    BrowserAnimationsModule
   ],
   providers: [
      ApiService, 

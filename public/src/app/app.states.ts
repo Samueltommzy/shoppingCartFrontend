@@ -17,7 +17,7 @@ export function productService (api: ApiService): any {
         console.log("got products" , data.data);
         if (!data) return false; 
 
-        return data.data.slice(1,30);
+        return data.data.slice(1,10);
     });
 }
 
