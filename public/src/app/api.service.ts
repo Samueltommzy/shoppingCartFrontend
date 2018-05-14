@@ -26,7 +26,7 @@ login(user: {}): any{
   }).catch(this.handleError);
 };
 
-googleLogin(user: {}) {
+socialLogin(user: {}) {
   console.log("user",user);
   return this.http.post(`${this.baseUrl}/user/googlesignin` , {user: user}).map(this.parseData).toPromise().then(response=>{
     console.log("google api");

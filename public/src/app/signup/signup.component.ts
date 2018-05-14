@@ -70,7 +70,7 @@ export class SignupComponent implements OnInit {
         id: data.id,
         token: data.token
       }
-      this.api.googleLogin(userData).then(data=>{
+      this.api.socialLogin(userData).then(data=>{
         if (!data.success) {
           this.state.go('signup' ,null ,{reload: true});
         }
