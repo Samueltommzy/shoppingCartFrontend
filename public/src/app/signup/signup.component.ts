@@ -64,6 +64,27 @@ export class SignupComponent implements OnInit {
     let fbProvider = FacebookLoginProvider.PROVIDER_ID;
     this.social.signIn(fbProvider).then((data)=>{
       console.log("data",data);
+      let userData = {
+        name: data.name,
+        email: data.email,
+        id: data.id,
+        token: data.token
+      }
+      this.api.googleLogin(userData).then(data=>{
+        if (!data.success) {
+          this.state.go('signup' ,null ,{reload: true});
+        }
+
+        else if (data.status == 201) {
+          alert(`Already logged in as ${userData.name}`);
+          this.state.go('products', null, {reload: true})
+        }
+
+        else {
+          alert("successfully logged in with facebook");
+          this.state.go('products' , null, {reload:true});
+        }
+      })
     })
     }
 
