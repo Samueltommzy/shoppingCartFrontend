@@ -5,19 +5,29 @@
                 <li><img src = "../../assets/logo.png" style="width:40px;height:auto;margin:10px;position:relative;"></li>
                 <li><a uiSref = "mycart">My cart</a></li>
                 <li><a href = "https://alcheadlines.herokuapp.com" target="__blank">Blog</a></li>
-                <li><a uisRef = "logout">logout</a></li>
+                <li><button (click) = "logout()">logout</button></li>
             </ul>
         </div>
         <div class="product" *ngIf="products.length">
             <div class= "prod" *ngFor="let product of products">
-                <p text-center >{{product.productName}}</p>
-                 <a uiiSref= 'order'><img [src] = "product.image" style="width: 300;height:200;"></a>
+                <p id = "name">{{product.productName}}</p>
+                 <a uiSref= 'order'><img [src] = "product.image" style="width: 300;height:200;"></a>
                  <div class="description">
                     <h2> {{product.productdescription}} </h2>
                  </div>
+                 <div class="row">
                     <p> Price : ${{product.productPrice}}</p>
+                    <div  class="qty">
+                    <label for="quantity">Quantity</label>
+                    <select id="Quantity" name = "Quantity" >
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    </div>
+                 </div>
                     <p> <button (click) ="order">Add to Cart</button></p>
-                    
                  </div>   
     </div>
 </html>

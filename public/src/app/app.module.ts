@@ -23,6 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Location } from'@angular/common';
 import {  SocialLoginModule,AuthServiceConfig } from  'angular5-social-login';
 import { authConfig } from '../config/social.config';
+import { AuthInterceptor } from './auth-interceptor';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { authConfig } from '../config/social.config';
     HttpModule,
     ReactiveFormsModule,
     SocialLoginModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+      HttpClientModule
   ],
   providers: [
      ApiService, 
@@ -49,6 +52,11 @@ import { authConfig } from '../config/social.config';
        provide: AuthServiceConfig,
        useFactory: authConfig
      }
+    //  {
+    //    provide: HTTP_INTERCEPTORS,
+    //    useClass: AuthInterceptor,
+    //    multi: true
+    //  }
   ],
   bootstrap: [UIView]
 })

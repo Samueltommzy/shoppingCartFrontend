@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../api.service';
 import { Observable } from 'rxjs/Observable';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { StateService } from '@uirouter/angular';
+import { StateService , Transition } from '@uirouter/angular';
 import { dataValidator } from '../validation';
 import { AuthService, FacebookLoginProvider,GoogleLoginProvider} from 'angular5-social-login';
 import { fadeIn } from '../animations/fadeIn';
@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
   public signupForm: FormGroup;
   public submitted: false;
   @Input() userData;
-  constructor( public formbuider: FormBuilder, public state: StateService,public api: ApiService ,private social: AuthService) {
+  constructor( public formbuider: FormBuilder, public state: StateService,public api: ApiService ,private social: AuthService, public trans: Transition) {
     this.signupForm = new FormGroup({
       firstName: new FormControl('', [ Validators.required,Validators.minLength(3)]),
       lastName: new FormControl('',  [ Validators.required, Validators.minLength(3)]),
@@ -55,7 +55,7 @@ export class SignupComponent implements OnInit {
     else{
     console.log("new state");
     alert(data.message);
-    this.state.go('products' , null, { reload: true});
+    this.state.go('products' , { name: this.userData.firstName}, { reload: true});
     }
   });   
   }
@@ -82,7 +82,7 @@ export class SignupComponent implements OnInit {
 
         else {
           alert("successfully logged in with facebook");
-          this.state.go('products' , null, {reload:true});
+          this.state.go('products' , {name:userData.name.split(" ")[0] }, {reload:true});
         }
       });
     });

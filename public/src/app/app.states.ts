@@ -13,12 +13,10 @@ import { StateService, Transition } from "@uirouter/angular";
 import { AppComponent } from './app.component';
 
 export function productService (api: ApiService): any {
-    return api.getAllProducts().then(data => {
-        console.log("got products" , data.data);
-        if (!data) return false; 
-
-        return data.data.slice(1,10);
-    });
+   return api.getAllProducts().then(data=>{
+       console.log("got products" , data.data);
+       return data.data.slice(1,10);
+   })
 }
 
 export const AppRoute = {
@@ -31,6 +29,7 @@ export const signupRoute = {
     parent: 'app',
     name : "signup",
     url: '/user/signup',
+    data: { authorization: false},
     component: SignupComponent,
 }
 
@@ -38,6 +37,7 @@ export const signinRoute = {
     parent:'app',
     name : "signin",
     url: '/user/signin',
+   
     component:SigninComponent
 }
 
@@ -45,13 +45,13 @@ export const productRoute = {
     name: 'products',
     url: '/products',
     component: ProfileComponent,
+   
     resolve :[
         {
             token: 'products',
-            deps:[ApiService],
+            deps:[ApiService, Transition],
             resolveFn : productService
         }
     ]
 }
-
 export const APP_STATES = [AppRoute,signinRoute,signupRoute,productRoute];

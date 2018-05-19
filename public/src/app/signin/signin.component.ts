@@ -6,15 +6,14 @@ import { ApiService } from '../../app/api.service';
 import { StateService } from '@uirouter/angular';
 import { dataValidator } from '../validation';
 import { fadeIn } from '../animations/fadeIn';
-
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss'],
   animations: [fadeIn],
-  host: { '[@fadeIn]': ''},
-  moduleId: module.id.toString()
+  
 })
 export class SigninComponent implements OnInit {
   public signinForm: FormGroup;
@@ -33,16 +32,37 @@ export class SigninComponent implements OnInit {
       email: this.signinForm.controls['email'].value,
       password: this.signinForm.controls['password'].value
     }
-    this.api.login(this.userData).then((data)=>{
-      console.log(data.success);
-      if (!data.success) { 
-        alert(data.message);
+    console.log("userData" , this.userData);
+    // this.api.login(this.userData).then(()=>{
+    //   // console.log(data.success);
+    //   // if (!data.success) { 
+    //   //   alert(data.message);
+    //   // }
+    //   let token = localStorage.getItem('token');
+    //   console.log("token", token);
+    //   if (token) {
+    //     console.log("tttt");
+    //     this.state.go('products' , null ,{reload: true});
+    //   }
+    //    else {
+    //   // alert(data.message);
+    //   console.log("nsh");
+    //    this.state.go('products' ,null ,{reload: true});
+    //    }
+    // });
+    this.api.login(this.userData).subscribe(data=>{
+      console.log("data from login endpoint", data);
+      console.log(data['success']);
+      if ( data ['success'])
+      {
+        let expiresAt = moment().add(data['expiresIn'],'seconds');
+        localStorage.setItem('token' , data['token']);
+        localStorage.setItem('expires' , JSON.stringify(expiresAt).valueOf());
+        localStorage.setItem('status' , data['status']);
+        localStorage.setItem('success' , data['success']);
       }
-
-      else {
-      alert(data.message);
-      this.state.go('products' , null ,{reload: true});
-      }
+      alert("successfully logged in");
+      this.state.go("products" ,null , {reload:true});
     });
   }
 }

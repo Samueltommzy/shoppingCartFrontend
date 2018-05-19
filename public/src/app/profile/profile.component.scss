@@ -47,6 +47,9 @@ topnav a:visited {
 .topnav ul li:last-child{
  float: right;
  right: 15%;
+ border-style: none;
+ color: white;
+ margin: 3px;
 }
 
 .product{
@@ -58,6 +61,7 @@ topnav a:visited {
 .prod  p:first-child {
     font-size: 15px;
     text-align: center;
+    float: left;
 }
 .product  p{
     margin-top: 8px;
@@ -88,6 +92,7 @@ topnav a:visited {
     color: white;
     left:3px;
     right: 2px;
+    margin: 3px;
 }
 .prod img {
     max-width: 100%;
@@ -102,19 +107,56 @@ button:hover{
 }
 p button {
     position: relative;
+    margin:5px;
+    bottom:23px;
+    margin: 3px;
     float: left;
-    bottom:28px;
 }
+.row {
+    width: auto;
+    background-color: rgba(200,200,200,0.4);
+    margin:3px;
+    border: 1px solid grey;
+}
+.row p {
+    float: left;
+    font-weight: bold;
+}
+.row .qty {
+    float: left;
+    margin: 7px;
+}
+.row .qty label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+
 @media only screen and (max-width:700px){
     .product{
         width: 100%;
         margin: 6px 0;
     }
 }
-@media only screen and (max-width:500px){
+@media only screen and (max-width:600px){
     .product{
         width: 100%;
     }
+    .prod #name {
+    font-size: 10px;
+    text-align: center;
+    float: left;
+}
+.topnav li {
+    display: inline-block;
+    padding: 5px;
+  
+}
+.topnav li a button{
+    border-bottom: 1px solid grey;
+    display: inline-block;
+}
 }
 .cleafix:after{
     content: "";
