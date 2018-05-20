@@ -27,6 +27,6 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 =======
-# finalproject
-Final project for ALC,google,Udacity Certification
->>>>>>> d14ed4fc7b8938cd3c8b4b415f4eadf52b0daa8e
+# Shopping cart
+ A simple cart built with NodeJs and angular5. project is still under development
+visit [shopping cart](https://cartcart.herkuapp.com) for a demo
