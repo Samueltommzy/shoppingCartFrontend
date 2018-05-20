@@ -11,7 +11,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { FooterComponent } from './footer/footer.component';
-import { SourceHeadlineComponent } from './source-headline/source-headline.component';
+import { CartPageComponent } from './cartPage/cartPage.component';
 
 import { ApiService } from './api.service';
 import { UIRouterModule } from '@uirouter/angular';
@@ -34,7 +34,7 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
     SigninComponent, 
     SignupComponent,
     FooterComponent,
-    SourceHeadlineComponent 
+    CartPageComponent
   ],
   imports: [
     RouterModule,
@@ -43,7 +43,7 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
     ReactiveFormsModule,
     SocialLoginModule,
     BrowserAnimationsModule,
-      HttpClientModule
+    HttpClientModule
   ],
   providers: [
      ApiService, 
