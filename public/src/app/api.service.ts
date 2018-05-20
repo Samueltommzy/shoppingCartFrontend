@@ -11,13 +11,12 @@ import * as moment from 'moment';
 @Injectable()
 export class ApiService {
 baseUrl : string
-//"https://cartbackend.herokuapp.com"
+
 constructor( private http: Http , private httpClient: HttpClient ) {
-this.baseUrl = "http://localhost:3000";
+this.baseUrl = "https://cartbackend.herokuapp.com";
 }
 
 signup(user): any {
-  console.log("api",user);
   return this.http.post(`${this.baseUrl}/user/signup` , {user:user}).map(this.parseData).toPromise().then(response => {
     return response;
   }).catch(this.handleError);
@@ -28,38 +27,39 @@ login(user: {}): any{
 };
 
 socialLogin(user: {}) {
-  console.log("user",user);
   return this.http.post(`${this.baseUrl}/user/googlesignin` , {user: user}).map(this.parseData).toPromise().then(response=>{
-    console.log("google api");
     return response;
   }).catch(this.handleError);
 };
 
 getAllProducts(): any{
   return this.http.get(`${this.baseUrl}/home/product`).map(this.parseData).toPromise()
-  .then(data=>{console.log("products" , data);return data}).catch(this.handleError);
+  .then(data=>{return data}).catch(this.handleError);
 };
 
 logout(): any {
   return this.http.get(`${this.baseUrl}/user/logout`).map(this.parseData).toPromise()
   .then(data=>{
-    console.log("log out" , data);
     if (data.success){
       localStorage.clear();
       return data;
     }
   })
 }
+addtoCart(product): any {
+  return this.http.post(`${this.baseUrl}/home/addtoCart` , {product: product}).map(this.parseData).toPromise()
+  .then(response =>{
+    return response;
+  }).catch(this.handleError)
+};
 
 private parseData(res: Response) {
   let data = res.json();
-  console.log('got data', data);
     return data;
 }
 private handleError(error: Response | any) {
   let errorMessage: string;
   errorMessage = error.message ? error.message : error.toString();
-  console.log("caught error",errorMessage);
   return Observable.throw(errorMessage);
 }
 
