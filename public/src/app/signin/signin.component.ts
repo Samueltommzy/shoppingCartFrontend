@@ -32,27 +32,8 @@ export class SigninComponent implements OnInit {
       email: this.signinForm.controls['email'].value,
       password: this.signinForm.controls['password'].value
     }
-    console.log("userData" , this.userData);
-    // this.api.login(this.userData).then(()=>{
-    //   // console.log(data.success);
-    //   // if (!data.success) { 
-    //   //   alert(data.message);
-    //   // }
-    //   let token = localStorage.getItem('token');
-    //   console.log("token", token);
-    //   if (token) {
-    //     console.log("tttt");
-    //     this.state.go('products' , null ,{reload: true});
-    //   }
-    //    else {
-    //   // alert(data.message);
-    //   console.log("nsh");
-    //    this.state.go('products' ,null ,{reload: true});
-    //    }
-    // });
+    
     this.api.login(this.userData).subscribe(data=>{
-      console.log("data from login endpoint", data);
-      console.log(data['success']);
       if ( data ['success'])
       {
         let expiresAt = moment().add(data['expiresIn'],'seconds');

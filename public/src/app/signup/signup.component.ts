@@ -51,9 +51,8 @@ export class SignupComponent implements OnInit {
   }
 
   this.api.signup(this.userData).then((data)=>{
-    if (!data.success) { console.log("error"); alert(data.message); }
+    if (!data.success) {alert(data.message); }
     else{
-    console.log("new state");
     alert(data.message);
     this.state.go('products' , { name: this.userData.firstName}, { reload: true});
     }
@@ -63,7 +62,6 @@ export class SignupComponent implements OnInit {
   fbLogin() {
     let fbProvider = FacebookLoginProvider.PROVIDER_ID;
     this.social.signIn(fbProvider).then((data)=>{
-      console.log("data",data);
       let userData = {
         name: data.name,
         email: data.email,
@@ -93,7 +91,6 @@ export class SignupComponent implements OnInit {
 googleLogin() {
   let googleProvider = GoogleLoginProvider.PROVIDER_ID;
     this.social.signIn(googleProvider).then((data)=>{
-      console.log("data",data);
       let userData = {
         name:data.name,
         email: data.email,
@@ -101,7 +98,6 @@ googleLogin() {
         token: data.token
       }
       this.api.socialLogin(userData).then(data=>{
-        console.log(data);
         if(!data.success){
           alert(data.message);
           this.state.go('signup', null, {reload:true});

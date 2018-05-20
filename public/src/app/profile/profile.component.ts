@@ -12,7 +12,7 @@ animations: [slide]
 })
 
 export class ProfileComponent implements OnInit {
-@Input() products : Array<object>;
+@Input() products : any;
 //@Input() name : any;
 
 constructor(private apiService : ApiService, public trans: Transition , public state: StateService) { 
@@ -20,9 +20,6 @@ constructor(private apiService : ApiService, public trans: Transition , public s
     
 }
 ngOnInit() { 
-    console.log("products in profile " , this.products);
-    //console.log("name" , this.name);
-   // alert(`welcome ${this.name}`);
     }
 public add(){
 
@@ -34,5 +31,19 @@ public add(){
              this.state.go('signup' , null , {reload: true});
          }
      });
+ }
+ public addtoCart(product) {
+     let producIndex = this.products.indexOf(product);
+     let productId = this.products[producIndex].id;
+     product = this.products[producIndex];
+     this.apiService.addtoCart(product).then(data=>{
+       if (data.success)  {
+           alert(data.message);
+           let cartProduct = data.data;
+           sessionStorage.setItem("products" ,JSON.stringify(cartProduct));
+           let myObj = JSON.parse(sessionStorage.getItem('products'));
+           this.state.go('cart' , {product: data.data} , {reload: true});
+       }
+     })
  }
 }
