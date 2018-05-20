@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component'
 import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
-import { SourceHeadlineComponent } from './source-headline/source-headline.component';
+import { CartPageComponent } from './cartPage/cartPage.component';
 import { SigninComponent } from './signin/signin.component';
 
 import { UIRouterModule } from '@uirouter/angular';
@@ -14,10 +14,10 @@ import { AppComponent } from './app.component';
 
 export function productService (api: ApiService): any {
    return api.getAllProducts().then(data=>{
-       console.log("got products" , data.data);
        return data.data.slice(1,10);
    })
 }
+
 
 export const AppRoute = {
     name: 'app',
@@ -54,4 +54,11 @@ export const productRoute = {
         }
     ]
 }
-export const APP_STATES = [AppRoute,signinRoute,signupRoute,productRoute];
+
+export const cartRoute = {
+    name: 'cart',
+    url: '/cart',
+    component: CartPageComponent
+}
+
+export const APP_STATES = [AppRoute,signinRoute,signupRoute,productRoute, cartRoute];
