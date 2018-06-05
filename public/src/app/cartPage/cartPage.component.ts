@@ -15,7 +15,8 @@ export class CartPageComponent implements OnInit {
   constructor(private location:Location,private state:StateService) { }
 
   ngOnInit() { 
-  
+    this.product =  localStorage.getItem("cartItems");
+    console.log(this.product);
   }
 
   goBack(){

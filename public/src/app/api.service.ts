@@ -7,6 +7,9 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { _throw } from 'rxjs/observable/throw';
 import * as moment from 'moment';
+import { LoadingBarHttpModule } from '@ngx-loading-bar/http'
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client'
+import { LoadingBarModule } from '@ngx-loading-bar/core'
 
 @Injectable()
 export class ApiService {
