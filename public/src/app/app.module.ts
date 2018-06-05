@@ -25,6 +25,9 @@ import {  SocialLoginModule,AuthServiceConfig } from  'angular5-social-login';
 import { authConfig } from '../config/social.config';
 import { AuthInterceptor } from './auth-interceptor';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { LoadingBarHttpModule } from '@ngx-loading-bar/http'
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client'
+import { LoadingBarModule } from '@ngx-loading-bar/core'
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
     SigninComponent, 
     SignupComponent,
     FooterComponent,
-    CartPageComponent
+    CartPageComponent,
+    
   ],
   imports: [
     RouterModule,
@@ -43,7 +47,10 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
     ReactiveFormsModule,
     SocialLoginModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    LoadingBarHttpClientModule,
+    LoadingBarHttpModule,
+    LoadingBarModule
   ],
   providers: [
      ApiService, 
