@@ -3,15 +3,16 @@
         <div class="topnav">
             <ul>
                 <li><img src = "../../assets/logo.png" style="width:40px;height:auto;margin:10px;position:relative;"></li>
-                <li><a uiSref = "mycart">My cart</a></li>
+                <li><a uiSref = "profiles">Home</a></li>
                 <li><a href = "https://alcheadlines.herokuapp.com" target="__blank">Blog</a></li>
+                 <li><a uiSref = "cart" target="__blank">Cart</a></li>
                 <li><button (click) = "logout()">logout</button></li>
             </ul>
         </div>
         <div class="product" *ngIf="products.length">
             <div class= "prod" *ngFor="let product of products">
                 <p id = "name">{{product.productName}}</p>
-                 <a uiSref= 'order'><img [src] = "product.image" style="width: 300;height:200;"></a>
+                 <a uiSref= 'cart'><img src = "../assets/ecom.jpg" style="width: 300;height:200;"></a>
                  <div class="description">
                     <h2> {{product.productdescription}} </h2>
                  </div>
@@ -29,5 +30,10 @@
                  </div>
                     <p> <button (click) ="addtoCart(product)">Add to Cart</button></p>
                  </div>   
+    </div>
+    <div class="footer">
+        <p text-center> Copyright Samueltommzy 2018.</p>
+        <h4>Github: <a href="https://github.com/Samuel">LINK</a></h4>
+        <h4>Twitter: <a href="https://twitter.com/Samueltommzy">LINK</a></h4>
     </div>
 </html>

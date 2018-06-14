@@ -1,4 +1,32 @@
 <!DOCTYPE html>
 <html>
-    {{product.productdescription}}
+        <div class="topnav">
+            <ul>
+                <li><img src = "../../assets/logo.png" style="width:40px;height:auto;margin:10px;position:relative;"></li>
+                <li><a uiSref = "products">Home</a></li>
+                <li><a href = "https://alcheadlines.herokuapp.com" target="__blank">Blog</a></li>
+                <li><button (click) = "logout()">logout</button></li>
+            </ul>
+        </div>
+        <div class="product" *ngIf="product">
+            <div class= "prod" *ngFor="let cart of product">
+                <p id = "name">{{cart.productName}}</p>
+                 <a uiSref= 'order'><img src = "../assets/ecom.jpg" style="width: 300;height:200;"></a>
+                 <div class="description">
+                    <h2> {{cart.productdescription}} </h2>
+                 </div>
+                 <div class="row">
+                    <p> Price : ${{cart.productPrice}}</p>
+                 </div>
+                    <p> <button (click) ="goBack()">Checkout</button></p>
+                 </div>   
+    </div>
+    <div>
+        <p> <button (click) ="goBack()">Clear Cart</button></p>
+    </div>
+    <div class="footer">
+        <p text-center> Copyright Samueltommzy 2018.</p>
+        <h4>Github: <a href="https://github.com/Samuel">LINK</a></h4>
+        <h4>Twitter: <a href="https://twitter.com/Samueltommzy">LINK</a></h4>
+    </div>
 </html>

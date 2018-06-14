@@ -1,3 +1,20 @@
  *{
      box-sizing: border-box;
 }
+.footer {
+    background-color: black;
+    margin-top: 3px;
+    border-style: none;
+    border-top:1px solid white;
+}
+.footer p ,h4 {
+    text-align: center;
+    color: white;
+}
+.footer a {
+    text-decoration: underline;
+    color: rgb(150,150,150);
+}
+.footer a:hover {
+    color: rgb(80,80,255)
+}

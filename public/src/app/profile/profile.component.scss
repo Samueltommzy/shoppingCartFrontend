@@ -104,6 +104,7 @@ topnav a:visited {
 button:hover{
     opacity: 0.5;
     color: rgb(200,200,200);
+    cursor: progress
 }
 p button {
     position: relative;
@@ -130,6 +131,23 @@ p button {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 15px;
+}
+.footer {
+    background-color: black;
+    margin-top: 3px;
+    border-style: none;
+    border-top:1px solid white;
+}
+.footer p ,h4 {
+    text-align: center;
+    color: white;
+}
+.footer a {
+    text-decoration: underline;
+    color: rgb(150,150,150);
+}
+.footer a:hover {
+    color: rgb(80,80,255)
 }
 
 

@@ -1,0 +1,182 @@
+*{
+    box-sizing: border-box;   
+}
+ 
+.topnav{
+    background-color: gray;
+   // position: fixed;
+    top: 0;
+    width:100%;
+    box-sizing: border-box;
+}
+.topnav ul {
+    list-style-type: none;
+    background-color: gray;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+.topnav li {
+    float: left;
+}
+.topnav  li a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.topnav a:link{
+    color: white;
+}
+.topnav a:active{
+    border: none;
+    text-decoration: none;
+
+}
+.topnav a:hover {
+    background-color: rgb(200,200,200);
+    color: black;
+    text-decoration: underline;
+}
+topnav a:visited {
+    color: rgb(100,15,150);    
+}
+
+.topnav ul li:last-child{
+ float: right;
+ right: 15%;
+ border-style: none;
+ color: white;
+ margin: 3px;
+}
+
+.product{
+   padding: 0 6px;
+   float: left;
+   width: auto;
+   height: auto;
+}
+.prod  p:first-child {
+    font-size: 15px;
+    text-align: center;
+    float: left;
+}
+.product  p{
+    margin-top: 8px;
+    padding: 12px 14px;
+}
+.prod{
+    // padding: 0 6px;
+    // border:1px solid #ccc;
+    // float: left;
+    // width: 100%;
+    border: 1px solid #ccc
+}
+.prod h2{
+    font-size: 15px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: oblique;
+}
+.prod:hover{
+    border: 1px solid #777;
+}
+.prod .description{
+    padding: 15px;
+    text-align: center;
+    font-size: 15px;
+    overflow-y : auto;
+    background-color: rgba(20,20,20,0.4);
+    color: white;
+    left:3px;
+    right: 2px;
+    margin: 3px;
+}
+.prod img {
+    max-width: 100%;
+    height: auto;
+}
+.prod .description:hover{
+    background-color: rgba(20,20,20,1.0);
+}
+button:hover{
+    opacity: 0.5;
+    color: rgb(200,200,200);
+}
+p button {
+    position: relative;
+    margin:5px;
+    bottom:23px;
+    margin: 3px;
+    float: left;
+}
+.row {
+    width: auto;
+    background-color: rgba(200,200,200,0.4);
+    margin:3px;
+    border: 1px solid grey;
+}
+.row p {
+    float: left;
+    font-weight: bold;
+}
+.row .qty {
+    float: left;
+    margin: 7px;
+}
+.row .qty label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+}
+.footer {
+    background-color: black;
+    margin-top: 3px;
+    border-style: none;
+    border-top:1px solid white;
+}
+.footer p ,h4 {
+    text-align: center;
+    color: white;
+}
+.footer a {
+    text-decoration: underline;
+    color: rgb(150,150,150);
+}
+.footer a:hover {
+    color: rgb(80,80,255)
+}
+
+
+@media only screen and (max-width:700px){
+    .product{
+        width: 100%;
+        margin: 6px 0;
+    }
+}
+@media only screen and (max-width:600px){
+    .product{
+        width: 100%;
+    }
+    .prod #name {
+    font-size: 10px;
+    text-align: center;
+    float: left;
+}
+.topnav li {
+    display: inline-block;
+    padding: 5px;
+  
+}
+.topnav li a button{
+    border-bottom: 1px solid grey;
+    display: inline-block;
+}
+}
+.cleafix:after{
+    content: "";
+    display: table;
+    clear: both;
+}
