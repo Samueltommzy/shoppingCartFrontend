@@ -16,7 +16,9 @@ export class ApiService {
 baseUrl : string
 
 constructor( private http: Http , private httpClient: HttpClient ) {
-this.baseUrl = "https://cartbackend.herokuapp.com";
+this.baseUrl ="https://cartbackend.herokuapp.com";
+// "http://localhost:3000";
+
 }
 
 signup(user): any {
@@ -37,7 +39,7 @@ socialLogin(user: {}) {
 
 getAllProducts(): any{
   return this.http.get(`${this.baseUrl}/home/product`).map(this.parseData).toPromise()
-  .then(data=>{return data}).catch(this.handleError);
+  .then(data=>{console.log("prods", data); return data}).catch(this.handleError);
 };
 
 logout(): any {
