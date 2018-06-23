@@ -37,10 +37,12 @@ export class SigninComponent implements OnInit {
       if ( data ['success'])
       {
         let expiresAt = moment().add(data['expiresIn'],'seconds');
-        localStorage.setItem('token' , data['token']);
-        localStorage.setItem('expires' , JSON.stringify(expiresAt).valueOf());
-        localStorage.setItem('status' , data['status']);
-        localStorage.setItem('success' , data['success']);
+        let userSession = {"token":   data['token'],
+                           "expires": JSON.stringify(expiresAt).valueOf(),
+                           "status" : data['status'],
+                           "success": data['success'],
+                         }
+        localStorage.setItem("userSession" , JSON.stringify(userSession));
       }
       alert("successfully logged in");
       this.state.go("products" ,null , {reload:true});

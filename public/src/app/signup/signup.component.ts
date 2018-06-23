@@ -54,7 +54,7 @@ export class SignupComponent implements OnInit {
     if (!data.success) {alert(data.message); }
     else{
     alert(data.message);
-    this.state.go('products' , { name: this.userData.firstName}, { reload: true});
+    this.state.go('signin' , { name: this.userData.firstName}, { reload: true});
     }
   });   
   }

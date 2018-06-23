@@ -29,7 +29,7 @@ public add(){
  }
  public logout() {
      this.apiService.logout().then(data=>{
-         if (data.success)  {
+         if (data.success)  {          
              alert(data.message);
              this.state.go('signup' , null , {reload: true});
          }
@@ -77,14 +77,7 @@ public add(){
         let cartItems = JSON.parse(localStorage.getItem('cart'));
         console.log("inial cart" , cartItems);
         let cartItem = new Array();
-         if (cartItems == undefined) {
-             cartItem.push(product);
-             localStorage.setItem('cart' , JSON.stringify(cartItem));
-             let newItem = JSON.parse(localStorage.getItem('cart'));
-             console.log("after DDING" , newItem);
-             this.state.go('cart',null , {reload:true});
-         }
-         else {
+         if( cartItems != null) {
              for (let i =0;i < cartItems.length;i++) {
                  if (product.productName == cartItems[i].productName) {
                      cartItems[i].productPrice += product.productPrice;
@@ -92,9 +85,17 @@ public add(){
                  else{
                      cartItems.push(product);
                      localStorage.setItem('cart', JSON.stringify(cartItems));
+                     
                  }
              }
             
+         }
+         else { 
+             cartItem.push(product);
+             localStorage.setItem('cart' , JSON.stringify(cartItem));
+             let newItem = JSON.parse(localStorage.getItem('cart'));
+             console.log("after DDING" , newItem);
+            // this.state.go('cart',null , {reload:true});
          }
          alert(data.message);
          this.state.go('cart', null , {reload:true});

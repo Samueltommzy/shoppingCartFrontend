@@ -31,4 +31,11 @@ export class CartPageComponent implements OnInit {
          }
      });
  }
+
+ public clear() {
+   localStorage.clear();
+   alert("cart has been cleared")
+   this.state.go('cart' , null, {reload: true});
+   
+ }
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <body>
         <div class="topnav">
             <ul>
                 <li><img src = "../../assets/logo.png" style="width:40px;height:auto;margin:10px;position:relative;"></li>
@@ -11,22 +12,24 @@
         <div class="product" *ngIf="product">
             <div class= "prod" *ngFor="let cart of product">
                 <p id = "name">{{cart.productName}}</p>
-                 <a uiSref= 'order'><img src = "../assets/ecom.jpg" style="width: 300;height:200;"></a>
+                 <a uiSref= 'order'><img src = "../assets/flat.jpg" style="width: 300;height:200;"></a>
                  <div class="description">
                     <h2> {{cart.productdescription}} </h2>
                  </div>
                  <div class="row">
                     <p> Price : ${{cart.productPrice}}</p>
+                     <p> <button (click) ="goBack()">Checkout</button></p>
                  </div>
-                    <p> <button (click) ="goBack()">Checkout</button></p>
                  </div>   
     </div>
-    <div>
-        <p> <button (click) ="goBack()">Clear Cart</button></p>
-    </div>
-    <div class="footer">
+    <div class="clear">
+          <p> <button (click) ="clear()">Clear Cart</button></p>
+     <div class="footer">
         <p text-center> Copyright Samueltommzy 2018.</p>
-        <h4>Github: <a href="https://github.com/Samuel">LINK</a></h4>
-        <h4>Twitter: <a href="https://twitter.com/Samueltommzy">LINK</a></h4>
+        <h4 text-center >Github: <a href="https://github.com/Samuel">LINK</a></h4>
+        <h4 text-center>Twitter: <a href="https://twitter.com/Samueltommzy">LINK</a></h4>
     </div>
+    </div>
+  
+    </body>
 </html>

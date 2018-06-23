@@ -113,6 +113,12 @@ p button {
     margin: 3px;
     float: left;
 }
+
+.button button {
+    margin-top:13px;
+    padding:7px;
+    cursor: pointer;
+}
 .row {
     width: auto;
     background-color: rgba(200,200,200,0.4);
@@ -141,6 +147,10 @@ p button {
 .footer p ,h4 {
     text-align: center;
     color: white;
+}
+h4 {
+    font-size: 15px;
+    padding-bottom: 5px;
 }
 .footer a {
     text-decoration: underline;

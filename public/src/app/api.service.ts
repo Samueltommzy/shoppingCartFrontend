@@ -16,8 +16,8 @@ export class ApiService {
 baseUrl : string
 
 constructor( private http: Http , private httpClient: HttpClient ) {
-this.baseUrl ="https://cartbackend.herokuapp.com";
-// "http://localhost:3000";
+this.baseUrl = "http://localhost:3000";
+//"https://cartbackend.herokuapp.com";
 
 }
 
@@ -46,11 +46,12 @@ logout(): any {
   return this.http.get(`${this.baseUrl}/user/logout`).map(this.parseData).toPromise()
   .then(data=>{
     if (data.success){
-      localStorage.clear();
+      localStorage.removeItem("userSession");
       return data;
     }
   })
 }
+
 addtoCart(product): any {
   return this.http.post(`${this.baseUrl}/home/addtoCart` , {product: product}).map(this.parseData).toPromise()
   .then(response =>{

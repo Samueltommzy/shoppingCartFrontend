@@ -104,6 +104,7 @@ topnav a:visited {
 button:hover{
     opacity: 0.5;
     color: rgb(200,200,200);
+    cursor: pointer;
 }
 p button {
     position: relative;
@@ -131,6 +132,9 @@ p button {
     font-weight: bold;
     font-size: 15px;
 }
+.row button {
+    margin-top:13px;
+}
 .footer {
     background-color: black;
     margin-top: 3px;
@@ -140,6 +144,11 @@ p button {
 .footer p ,h4 {
     text-align: center;
     color: white;
+    margin-top: 15px;
+}
+h4 {
+    font-size: 15px;
+    padding-bottom: 5px;
 }
 .footer a {
     text-decoration: underline;
@@ -147,6 +156,14 @@ p button {
 }
 .footer a:hover {
     color: rgb(80,80,255)
+}
+.clear {
+    margin-top: 14px;
+}
+.clear button {
+    margin: 30px;
+    padding: 10px;
+    cursor: pointer;
 }
 
 
