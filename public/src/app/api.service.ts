@@ -16,8 +16,8 @@ export class ApiService {
 baseUrl : string
 
 constructor( private http: Http , private httpClient: HttpClient ) {
-this.baseUrl = "http://localhost:3000";
-//"https://cartbackend.herokuapp.com";
+this.baseUrl = "https://cartbackend.herokuapp.com";
+//"http://localhost:3000";
 
 }
 
