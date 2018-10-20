@@ -1,20 +1,29 @@
- *{
-     box-sizing: border-box;
+
+.container{
+    margin-top:150px;
+    background: linear-gradient(30deg,lightblue,gray);
+    width: 100%;
 }
-.footer {
+.footer{
     background-color: black;
-    margin-top: 3px;
-    border-style: none;
-    border-top:1px solid white;
-}
-.footer p ,h4 {
     text-align: center;
     color: white;
+    padding: 5px;
+    bottom: 0px;
+    margin-top: 148px;
 }
-.footer a {
-    text-decoration: underline;
-    color: rgb(150,150,150);
-}
-.footer a:hover {
-    color: rgb(80,80,255)
-}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: lightblue;
+    color: black;
+    border: 1px solid white;
+    padding: 10px;
+    width: 50vw;
+    align-content: center;
+    margin-left: 20vw;
+    margin-top: 60px;
+    
+ }

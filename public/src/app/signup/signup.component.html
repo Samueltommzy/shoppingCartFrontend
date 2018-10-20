@@ -68,13 +68,15 @@
         <button [disabled] = "!signupForm.valid" (click)="user()">Signup</button>
         </div>
      </form>
-      <div class="row">
+      <div class="alternative">
           <div class="social">
               <span class="or" text-center>OR</span>
+              <div class="social-button">
               <button class="fb" (click) = "fbLogin()"> Login with Facebook</button>
               <button class="google" (click) = "googleLogin()"> Login with Google</button>
+              </div>
           </div>
-          <p>Already have an account? <a uiSref = 'signin' >Sign in</a></p>
+          <h4>Already have an account? <a uiSref = 'signin' >Sign in</a></h4>
     </div>
     </div>
       <div class="footer">
